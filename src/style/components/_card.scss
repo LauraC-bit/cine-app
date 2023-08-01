@@ -1,0 +1,60 @@
+.card {
+  h1 {
+    text-align: center;
+  }
+  img {
+    object-fit: cover;
+    max-width: 331px;
+    min-height: 228px;
+    border-radius: 8px;
+  }
+  &_button_style {
+    z-index: 3;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    font-size: calc(0.6rem + 0.6vmin);
+    padding: 8px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1 0;
+  z-index: 1;
+  min-width: 368px;
+  min-height: 658px;
+  margin: 18px;
+  padding: 8px;
+  background: rgb(255, 248, 220);
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  font-size: larger;
+  display: flex;
+  flex: 1 0;
+  flex-direction: column;
+  line-height: 1.4;
+  text-align: center;
+  position: absolute;
+  color: whitesmoke;
+  min-width: 368px;
+  min-height: 658px;
+  max-width: 368px;
+  max-height: 658px;
+  margin: 18px;
+  padding: 8px;
+  opacity: 0.9;
+  border-radius: 18px;
+  background: black;
+  z-index: 3;
+  font-family: "Edu SA Beginner", cursive;
+}

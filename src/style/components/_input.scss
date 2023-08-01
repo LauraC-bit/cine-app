@@ -1,0 +1,12 @@
+.input {
+  &:hover {
+    border: 2px solid black;
+  }
+  min-width: calc(38rem + 0.6vmin);
+  line-height: 3rem;
+  font-size: large;
+  padding: 8px 18px 8px 18px;
+  border-radius: 8px;
+  border: 2px solid white;
+  margin: 18px;
+}

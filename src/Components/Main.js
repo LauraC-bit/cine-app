@@ -2,18 +2,37 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovies } from "../feature/movies.slice";
 
 const Main = () => {
   const [dataMoovies, setDataMoovies] = useState([]);
-  console.log(dataMoovies);
+  const dispatch = useDispatch();
+
+  let inputValue = useSelector((state) => state.input.input);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&query=code&language=fr-FR"
-      )
-      .then((movie) => setDataMoovies(movie.data.results));
-  }, []);
+    if (inputValue === "") {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +
+            `home`
+        )
+        .then((movie) => setDataMoovies(movie.data.results));
+    } else {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +
+            `${inputValue}`
+        )
+        .then((movie) => setDataMoovies(movie.data.results));
+    }
+  }, [inputValue]);
+
+  useEffect(() => {
+    console.log(dataMoovies);
+    dispatch(addMovies(dataMoovies));
+  }, [dataMoovies]);
 
   return (
     <div className="main_flex">

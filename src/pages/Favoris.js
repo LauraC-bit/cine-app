@@ -9,11 +9,15 @@ const Favoris = () => {
   );
 
   const moviesStore = useSelector((state) => state.movies.Movies);
+  console.log(moviesStore);
 
   return (
     <div>
       <Navigation />
-      {moviesStore && moviesStore.map((movie, index) => <Card key={index} />)}
+      <div className="main_flex">
+        {moviesStore &&
+          moviesStore.map((movie, index) => <Card key={index} movie={movie} />)}
+      </div>
     </div>
   );
 };

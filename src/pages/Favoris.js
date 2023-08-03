@@ -8,11 +8,12 @@ const Favoris = () => {
     (state) => state.favorisMovies.favorisMovies
   );
 
+  const moviesStore = useSelector((state) => state.movies.Movies);
+
   return (
     <div>
       <Navigation />
-      {moviesFavoris &&
-        moviesFavoris.map((movie, index) => <Card key={index} />)}
+      {moviesStore && moviesStore.map((movie, index) => <Card key={index} />)}
     </div>
   );
 };

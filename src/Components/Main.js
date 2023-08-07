@@ -15,15 +15,10 @@ const Main = () => {
     if (inputValue === "") {
       axios
         .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +
-            `home`
+          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query="
         )
         .then((movie) => setDataMoovies(movie.data.results));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (inputValue !== "") {
+    } else {
       axios
         .get(
           "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +

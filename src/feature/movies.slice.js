@@ -10,7 +10,25 @@ export const moviesSlice = createSlice({
       state.Movies = action.payload;
     },
     addMovies: (state, action) => {
-      state.Movies.push(...action.payload);
+      console.log(action);
+      if (action.payload.length == 0) {
+        let uniqueIds = state.Movies.map((movie) => movie.id);
+
+        for (let i = 0; i <= action.payload.length; i++) {
+          if (uniqueIds.includes(action.payload[i].id)) {
+            console.log(
+              "Movie " + action.payload[i].title + "already in store"
+            );
+          } else {
+            state.Movies.push(action.payload[i]);
+          }
+        }
+      }
+
+      // if () {
+
+      // }
+      // state.Movies.push(...action.payload);
     },
     // editPicture: (state, action) => {
     //   state.pictures = state.pictures.map((pic) => {

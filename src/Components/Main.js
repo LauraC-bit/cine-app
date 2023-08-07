@@ -19,7 +19,11 @@ const Main = () => {
             `home`
         )
         .then((movie) => setDataMoovies(movie.data.results));
-    } else {
+    }
+  }, []);
+
+  useEffect(() => {
+    if (inputValue !== "") {
       axios
         .get(
           "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +
@@ -30,7 +34,6 @@ const Main = () => {
   }, [inputValue]);
 
   useEffect(() => {
-    console.log(dataMoovies);
     dispatch(addMovies(dataMoovies));
   }, [dataMoovies]);
 

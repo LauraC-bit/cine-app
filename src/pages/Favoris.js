@@ -23,13 +23,8 @@ const Favoris = () => {
 
   console.log(match);
 
-  const something = useRef(true);
   useEffect(() => {
-    if (something.current) {
-      something.current = false;
-      // console.log("be print only once"); work it only print once
-      setResult(moviesStore.filter((movies) => match.includes(movies.id))); //and again it print two times on site and 3 times on console
-    }
+    setResult(moviesStore.filter((movies) => match.includes(movies.id)));
   }, []);
 
   return (

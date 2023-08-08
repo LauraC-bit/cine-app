@@ -7,6 +7,10 @@ import { addID } from "../feature/favorite.slice";
 
 const Card = (props) => {
   const { movie } = props;
+  const [isClass, setClass] = useState(false);
+  const [buttonValue, setButtonValue] = useState(
+    "Ajouter à mes Coups de coeur"
+  );
 
   const dateFr = movie.release_date.split("-");
   const [active, setActive] = useState(false);
@@ -30,6 +34,23 @@ const Card = (props) => {
   // const dataGender = Object.entries(GenderID)
   //   .filter(([key, val]) => val.includes(movie.genre_ids))
   //   .map((IDM) => IDM);
+
+  const handleClick = (movie) => {
+    if (isClass === false && buttonValue === "Ajouter à mes Coups de coeur") {
+      setClass(true);
+      setButtonValue("Retirer des Coups de coeur");
+      setFavorisMovies([...favorisMovies, movie]);
+    } else {
+      setClass(false);
+      setButtonValue("Ajouter à mes Coups de coeur");
+      //retirer le movie.id de FavorisMovies
+      setFavorisMovies(favorisMovies.filter((item) => item.value !== movie)); //euh... l'id se rajoute de la même maniere que tous les films se rajoutent en double dans favorisMovies
+      //autre solution : const handleRemoveItem = movie => { (appeler la fonction en transmettant en parametre movie.id)
+      //favorisMovies.splice(favorisMovies.indexOf(movie)-1, 1)
+      //setFavorisMovies(favorisMovies); <- c'est correct ça?
+      //}
+    }
+  };
 
   const handleMouseOver = () => {
     setActive(true);
@@ -58,13 +79,13 @@ const Card = (props) => {
         alt={"affiche de " + movie.title}
       />
       <p>Date de sortie : {dateFr[2] + "/" + dateFr[1] + "/" + dateFr[0]}</p>
-      <p>Note du film : {Math.round(movie.vote_average * 100) / 100 + "/10"}</p>
+      <p>Note du film : {Math.round(movie.vote_average * 10) / 10 + "/10"}</p>
       <p>Genre: {idMovies === idGender[0] ? idGender[0].keys : idMovies}</p>
       <button
-        className="card_button_style"
-        onClick={() => setFavorisMovies([...favorisMovies, movie.id])}
+        className={isClass ? "card_button_style fav" : "card_button_style"}
+        onClick={() => handleClick(movie.id)}
       >
-        Ajouter à mes Coups de coeur
+        {buttonValue}
       </button>
     </div>
   );

@@ -3,10 +3,10 @@ import { GenderID } from "../data/GenderID";
 import defaultPoster from "../assets/poster.jpg";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { addID } from "../feature/favorite.slice";
+import { addID, deleteID } from "../feature/favorite.slice";
 
 const Card = (props) => {
-  const { movie } = props;
+  const { movie, isFavPage } = props;
   const [isClass, setClass] = useState(false);
   const [buttonValue, setButtonValue] = useState(
     "Ajouter à mes Coups de coeur"
@@ -15,6 +15,7 @@ const Card = (props) => {
   const dateFr = movie.release_date.split("-");
   const [active, setActive] = useState(false);
   const [favorisMovies, setFavorisMovies] = useState([]);
+  const [deleteFavorisMovies, setdeleteFavorisMovies] = useState([]);
   const idMovies = movie.genre_ids.map((idM) => idM);
   const idGender = Object.entries(GenderID).map((idG) => idG[1]);
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const Card = (props) => {
   const handleClick = (movie) => {
     if (isClass === false && buttonValue === "Ajouter à mes Coups de coeur") {
       setClass(true);
-      setButtonValue("Retirer des Coups de coeur");
+      setButtonValue("Ajout effectué !");
       setFavorisMovies([...favorisMovies, movie]);
     } else {
       setClass(false);
@@ -50,6 +51,14 @@ const Card = (props) => {
       //setFavorisMovies(favorisMovies); <- c'est correct ça?
       //}
     }
+  };
+
+  useEffect(() => {
+    dispatch(deleteID(...deleteFavorisMovies));
+  }, [deleteFavorisMovies]);
+
+  const deleteFavorite = (movie) => {
+    setdeleteFavorisMovies([...deleteFavorisMovies, movie]);
   };
 
   const handleMouseOver = () => {
@@ -81,12 +90,21 @@ const Card = (props) => {
       <p>Date de sortie : {dateFr[2] + "/" + dateFr[1] + "/" + dateFr[0]}</p>
       <p>Note du film : {Math.round(movie.vote_average * 10) / 10 + "/10"}</p>
       <p>Genre: {idMovies === idGender[0] ? idGender[0].keys : idMovies}</p>
-      <button
-        className={isClass ? "card_button_style fav" : "card_button_style"}
-        onClick={() => handleClick(movie.id)}
-      >
-        {buttonValue}
-      </button>
+      {isFavPage ? (
+        <button
+          className="card_button_style outFav"
+          onClick={() => deleteFavorite(movie.id)}
+        >
+          Retirer des Coups de coeur
+        </button>
+      ) : (
+        <button
+          className={isClass ? "card_button_style fav" : "card_button_style"}
+          onClick={() => handleClick(movie.id)}
+        >
+          {buttonValue}
+        </button>
+      )}
     </div>
   );
 };

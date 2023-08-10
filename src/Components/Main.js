@@ -35,7 +35,9 @@ const Main = () => {
   return (
     <div className="main_flex">
       {dataMoovies &&
-        dataMoovies.map((movie, index) => <Card key={index} movie={movie} />)}
+        dataMoovies.map((movie, index) => (
+          <Card key={index} movie={movie} isFavPage={false} />
+        ))}
     </div>
   );
 };

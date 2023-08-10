@@ -10,13 +10,12 @@ export const moviesSlice = createSlice({
       state.Movies = action.payload;
     },
     addMovies: (state, action) => {
-      console.log(action.payload);
       if (action.payload.length !== 0) {
         if (state.Movies.length !== 0) {
           let uniqueIds = state.Movies.map((movie) => movie.id);
 
-          for (let i = 0; i <= action.payload.length; i++) {
-            if (uniqueIds.includes(action.payload.id[i])) {
+          for (let i = 0; i < action.payload.length; i++) {
+            if (uniqueIds.includes(action.payload[i].id)) {
               console.log(
                 "Movie " + action.payload[i].title + "already in store" //ça ne passe pas la dedans ça continue à ajouter dans favoriesMovies et favoris l24
               );

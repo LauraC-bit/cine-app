@@ -61,4 +61,10 @@
 
 .fav {
   background: lightgreen;
+  pointer-events: none;
+}
+
+.outFav {
+  background: lightcoral;
+  color: white;
 }

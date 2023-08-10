@@ -1,0 +1,12 @@
+
+.emptyFavoris {
+    span {margin-top: calc(8rem + 0.6vmin);
+        font-style: italic;
+        font-size: larger;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+}

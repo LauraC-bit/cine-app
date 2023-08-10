@@ -10,10 +10,14 @@ export const favorisSlice = createSlice({
       state.favorisMovies = action.payload;
     },
     addID: (state, action) => {
-      state.favorisMovies.push(action.payload);
-      state.favorisMovies = state.favorisMovies.filter((elements) => {
-        return elements !== null;
-      });
+      if (
+        state.favorisMovies.includes(action.payload) ||
+        action.payload === null
+      ) {
+        console.log("ID déjà présent ou ID null");
+      } else {
+        state.favorisMovies.push(action.payload);
+      }
     },
     // editPicture: (state, action) => {
     //   state.pictures = state.pictures.map((pic) => {
@@ -27,13 +31,13 @@ export const favorisSlice = createSlice({
     //     }
     //   });
     // },
-    // deletePicture: (state, action) => {
-    //   state.pictures = state.pictures.filter(
-    //     (pic) => pic.id !== action.payload
-    //   );
-    // },
+    deleteID: (state, action) => {
+      state.favorisMovies = state.favorisMovies.filter(
+        (moviesID) => moviesID !== action.payload
+      );
+    },
   },
 });
 
 export default favorisSlice.reducer;
-export const { setFavorisMoviesStore, addID } = favorisSlice.actions;
+export const { setFavorisMoviesStore, addID, deleteID } = favorisSlice.actions;

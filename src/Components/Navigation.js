@@ -10,27 +10,27 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
 
-  //envoyer inputValue dans le store
-
   useEffect(() => {
     dispatch(setInputValueStore(inputValue));
   }, [inputValue]);
 
   return (
     <div className="navigation">
-      <img src={icon} alt="logo-cinema" className="icon" />
-      <NavLink to="/" className="nav">
-        <p>Accueil</p>
-      </NavLink>
-      <NavLink to="/favoris" className="nav">
-        <p>Coup de coeur</p>
-      </NavLink>
+      <div className="navigation_menu">
+        <img src={icon} alt="logo-cinema" className="icon" />
+        <NavLink to="/" className="nav">
+          <p>Accueil</p>
+        </NavLink>
+        <NavLink to="/favoris" className="nav">
+          <p>Coup de coeur</p>
+        </NavLink>
+      </div>
       <div className="title_input">
         <h1 className="title">Cine App</h1>
         <input
           className="input"
           type="text"
-          placeholder="Entrez un nom de film..."
+          placeholder="Chercher un film..."
           onChange={(e) => setInputValue(e.target.value)}
         />
       </div>

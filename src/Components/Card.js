@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { GenderID } from "../data/GenderID";
-import defaultPoster from "../assets/poster.jpg";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { addID, deleteID } from "../feature/favorite.slice";
@@ -16,8 +14,6 @@ const Card = (props) => {
   const [active, setActive] = useState(false);
   const [favorisMovies, setFavorisMovies] = useState([]);
   const [deleteFavorisMovies, setdeleteFavorisMovies] = useState([]);
-  const idMovies = movie.genre_ids.map((idM) => idM);
-  const idGender = Object.entries(GenderID).map((idG) => idG[1]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,30 +22,95 @@ const Card = (props) => {
     }
   }, [favorisMovies]);
 
-  // console.log(idGender[0]); => work
-
-  // if (idGender.includes(idMovies)) {
-  //   console.log(idGender.props);
-  //   return idGender;
-  // }
-  // const dataGender = Object.entries(GenderID)
-  //   .filter(([key, val]) => val.includes(movie.genre_ids))
-  //   .map((IDM) => IDM);
+  const genreFinder = () => {
+    let genreArray = [];
+    for (let i = 0; i < movie.genre_ids.length; i++) {
+      switch (movie.genre_ids[i]) {
+        case 28:
+          genreArray.push("Action");
+          break;
+        case 12:
+          genreArray.push("Aventure");
+          break;
+        case 16:
+          genreArray.push("Animation");
+          break;
+        case 38:
+          genreArray.push("Comédie");
+          break;
+        case 80:
+          genreArray.push("Policier");
+          break;
+        case 99:
+          genreArray.push("Documentaire");
+          break;
+        case 18:
+          genreArray.push("Drame");
+          break;
+        case 10751:
+          genreArray.push("Famille");
+          break;
+        case 14:
+          genreArray.push("Fantasy");
+          break;
+        case 36:
+          genreArray.push("Histoire");
+          break;
+        case 27:
+          genreArray.push("Horreur");
+          break;
+        case 10402:
+          genreArray.push("Musique");
+          break;
+        case 9648:
+          genreArray.push("Mystère");
+          break;
+        case 10749:
+          genreArray.push("Romance");
+          break;
+        case 878:
+          genreArray.push("Science-Fiction");
+          break;
+        case 10770:
+          genreArray.push("Téléfilm");
+          break;
+        case 53:
+          genreArray.push("Thriller");
+          break;
+        case 10752:
+          genreArray.push("Guerre");
+          break;
+        case 37:
+          genreArray.push("Western");
+          break;
+        default:
+          break;
+      }
+    }
+    return genreArray.map((genre) => (
+      <li key={genre} className="card_ul_li">
+        {genre}
+      </li>
+    ));
+  };
 
   const handleClick = (movie) => {
     if (isClass === false && buttonValue === "Ajouter à mes Coups de coeur") {
       setClass(true);
       setButtonValue("Ajout effectué !");
       setFavorisMovies([...favorisMovies, movie]);
+      // let storedData = window.localStorage.movies
+      //   ? window.localStorage.movies.split(",")
+      //   : [];
+
+      // if (!storedData.includes(movie.id.toString())) {
+      //   storedData.push(movie.id);
+      //   window.localStorage.movies = storedData;
+      // }
     } else {
       setClass(false);
       setButtonValue("Ajouter à mes Coups de coeur");
-      //retirer le movie.id de FavorisMovies
-      setFavorisMovies(favorisMovies.filter((item) => item.value !== movie)); //euh... l'id se rajoute de la même maniere que tous les films se rajoutent en double dans favorisMovies
-      //autre solution : const handleRemoveItem = movie => { (appeler la fonction en transmettant en parametre movie.id)
-      //favorisMovies.splice(favorisMovies.indexOf(movie)-1, 1)
-      //setFavorisMovies(favorisMovies); <- c'est correct ça?
-      //}
+      setFavorisMovies(favorisMovies.filter((item) => item.value !== movie));
     }
   };
 
@@ -76,20 +137,28 @@ const Card = (props) => {
       onMouseOut={handleMouseOut}
     >
       <div className={active ? "visible" : "hidden"}>
-        <h4>Resume : </h4> <p>{movie.overview}</p>
+        <h4>Resume : </h4> <p>{movie.overview ? movie.overview : "Inconnu"}</p>
       </div>
       <h1>{movie.title}</h1>
       <img
         src={
-          "https://image.tmdb.org/t/p/original/" + movie.backdrop_path
-            ? "https://image.tmdb.org/t/p/original/" + movie.backdrop_path
-            : { defaultPoster }
+          movie.poster_path
+            ? "https://image.tmdb.org/t/p/original/" + movie.poster_path
+            : "./assets/poster.jpg"
         }
         alt={"affiche de " + movie.title}
       />
-      <p>Date de sortie : {dateFr[2] + "/" + dateFr[1] + "/" + dateFr[0]}</p>
-      <p>Note du film : {Math.round(movie.vote_average * 10) / 10 + "/10"}</p>
-      <p>Genre: {idMovies === idGender[0] ? idGender[0].keys : idMovies}</p>
+      <p>
+        Date de sortie :{" "}
+        {movie.release_date
+          ? dateFr[2] + "/" + dateFr[1] + "/" + dateFr[0]
+          : "Inconnue"}
+      </p>
+      <p>
+        <span> &#11088; </span>
+        {Math.round(movie.vote_average * 10) / 10 + "/10"}
+      </p>
+      <ul className="card_ul">{movie.genre_ids ? genreFinder() : null}</ul>
       {isFavPage ? (
         <button
           className="card_button_style outFav"

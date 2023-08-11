@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import icon from "../assets/cinema.svg";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { setInputValueStore } from "../feature/input.slice";
 
-const Navigation = () => {
-  const [inputValue, setInputValue] = useState("");
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setInputValueStore(inputValue));
-  }, [inputValue]);
-
+const Navigation = (props) => {
+  const { openMenu } = props;
   return (
     <div className="navigation">
-      <div className="navigation_menu">
+      <div className={openMenu ? "navigation_menu" : "display"}>
         <img src={icon} alt="logo-cinema" className="icon" />
         <NavLink to="/" className="nav">
           <p>Accueil</p>
@@ -24,15 +14,6 @@ const Navigation = () => {
         <NavLink to="/favoris" className="nav">
           <p>Coup de coeur</p>
         </NavLink>
-      </div>
-      <div className="title_input">
-        <h1 className="title">Cine App</h1>
-        <input
-          className="input"
-          type="text"
-          placeholder="Chercher un film..."
-          onChange={(e) => setInputValue(e.target.value)}
-        />
       </div>
     </div>
   );

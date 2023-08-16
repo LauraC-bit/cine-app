@@ -1,18 +1,18 @@
 import React from "react";
-import Main from "../Components/Main";
 import ButtonMenu from "../Components/ButtonMenu";
 import Title from "../Components/Title";
+import Form from "../Components/Form";
 import Input from "../Components/Input";
 
-const Accueil = () => {
+const Connexion = () => {
   return (
     <div>
       <ButtonMenu />
       <Title />
-      <Input />
-      <Main />
+      <h1>Connexion</h1>
+      <Form />
     </div>
   );
 };
 
-export default Accueil;
+export default Connexion;

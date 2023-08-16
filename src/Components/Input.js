@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setInputValueStore } from "../feature/input.slice";
 
-const Title_input = () => {
+const Input = () => {
   const [inputValue, setInputValue] = useState("");
 
   const dispatch = useDispatch();
@@ -13,8 +13,7 @@ const Title_input = () => {
   }, [inputValue]);
 
   return (
-    <div className="title_input">
-      <h1 className="title">Cine App</h1>
+    <div className="display">
       <input
         className="input"
         type="text"
@@ -25,4 +24,4 @@ const Title_input = () => {
   );
 };
 
-export default Title_input;
+export default Input;

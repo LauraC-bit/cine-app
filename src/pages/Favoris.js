@@ -1,11 +1,11 @@
 import React from "react";
-import Navigation from "../Components/Navigation";
 import { useSelector } from "react-redux";
 import Card from "../Components/Card";
 import { useEffect } from "react";
 import { useState } from "react";
 import ButtonMenu from "../Components/ButtonMenu";
-import Title_input from "../Components/Title_input";
+import Title from "../Components/Title";
+import Input from "../Components/Input";
 
 const Favoris = () => {
   const [result, setResult] = useState([]);
@@ -43,7 +43,8 @@ const Favoris = () => {
   return (
     <div>
       <ButtonMenu />
-      <Title_input />
+      <Title />
+      <Input />
       <div className="main_flex">
         {moviesFavoris.length === 0 ? (
           <div className="emptyFavoris">

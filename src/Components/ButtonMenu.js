@@ -15,8 +15,18 @@ const ButtonMenu = () => {
     }
   };
 
+  const HandleMenu = (e) => {
+    if (openMenu === true) {
+      setBlackBackground(false);
+      setOpenMenu(false);
+    }
+  };
+
   return (
-    <div className={blackBackground ? "blackBackground" : ""}>
+    <div
+      className={blackBackground ? "blackBackground" : ""}
+      onClick={(e) => HandleMenu(e)}
+    >
       <div className="relative">
         <div className="placement_btn">
           <div

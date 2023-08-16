@@ -14,6 +14,9 @@ const Navigation = (props) => {
         <NavLink to="/favoris" className="nav">
           <p>Coup de coeur</p>
         </NavLink>
+        <NavLink to="/connexion" className="nav">
+          <p>Se connecter</p>
+        </NavLink>
       </div>
     </div>
   );

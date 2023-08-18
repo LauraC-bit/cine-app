@@ -38,7 +38,7 @@ const ButtonMenu = () => {
             <div className="icon-right"></div>
           </div>
         </div>
-        <div className={openMenu ? "menu" : "display"}>
+        <div className={openMenu ? "menu" : "displayMenu"}>
           <Navigation openMenu={openMenu} />
         </div>
       </div>

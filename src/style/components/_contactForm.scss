@@ -6,6 +6,9 @@ form {
     padding-bottom: 8px;
   }
   input {
+    &:lastchild {
+      cursor: pointer;
+    }
     border-radius: 8px;
     font-size: large;
     line-height: 3rem;

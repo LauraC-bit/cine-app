@@ -6,7 +6,7 @@ const Navigation = (props) => {
   const { openMenu } = props;
   return (
     <div className="navigation">
-      <div className={openMenu ? "navigation_menu" : "display"}>
+      <div className={openMenu ? "navigation_menu" : "displayNav"}>
         <img src={icon} alt="logo-cinema" className="icon" />
         <NavLink to="/" className="nav">
           <p>Accueil</p>
@@ -16,6 +16,9 @@ const Navigation = (props) => {
         </NavLink>
         <NavLink to="/connexion" className="nav">
           <p>Se connecter</p>
+        </NavLink>
+        <NavLink to="/contact" className="nav">
+          <p>Contact</p>
         </NavLink>
       </div>
     </div>

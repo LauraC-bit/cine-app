@@ -99,14 +99,6 @@ const Card = (props) => {
       setClass(true);
       setButtonValue("Ajout effectué !");
       setFavorisMovies([...favorisMovies, movie]);
-      // let storedData = window.localStorage.movies
-      //   ? window.localStorage.movies.split(",")
-      //   : [];
-
-      // if (!storedData.includes(movie.id.toString())) {
-      //   storedData.push(movie.id);
-      //   window.localStorage.movies = storedData;
-      // }
     } else {
       setClass(false);
       setButtonValue("Ajouter à mes Coups de coeur");

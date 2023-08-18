@@ -1,17 +1,17 @@
 import React from "react";
 import ButtonMenu from "../Components/ButtonMenu";
 import Title from "../Components/Title";
-import ConnexionForm from "../Components/ConnexionForm";
+import Form from "../Components/ContactForm";
 
-const Connexion = () => {
+const Contact = () => {
   return (
     <div>
       <ButtonMenu />
       <Title />
-      <h1>Connexion</h1>
-      <ConnexionForm />
+      <h1>Ecrivez-nous !</h1>
+      <Form />
     </div>
   );
 };
 
-export default Connexion;
+export default Contact;

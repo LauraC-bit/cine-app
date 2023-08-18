@@ -4,6 +4,7 @@ import Favoris from "./pages/Favoris";
 import Accueil from "./pages/Accueil";
 import Error from "./pages/Error";
 import Connexion from "./pages/Connexion";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={<Accueil />}></Route>
         <Route path="/favoris" element={<Favoris />}></Route>
         <Route path="/connexion" element={<Connexion />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

@@ -10,7 +10,7 @@ export const moviesSlice = createSlice({
       state.Movies = action.payload;
     },
     addMovies: (state, action) => {
-      if (action.payload.length !== 0) {
+      if (action.payload.length !== 0 && Array.isArray(action.payload)) {
         if (state.Movies.length !== 0) {
           let uniqueIds = state.Movies.map((movie) => movie.id);
 

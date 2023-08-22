@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addID, deleteID } from "../feature/favorite.slice";
+import axios from "axios";
 
 const Card = (props) => {
   const { movie, isFavPage } = props;
@@ -16,9 +17,35 @@ const Card = (props) => {
   const [deleteFavorisMovies, setdeleteFavorisMovies] = useState([]);
   const dispatch = useDispatch();
 
+  let token = useSelector((state) => state.token.token[1]); // ou state.token.token[1]?
+
   useEffect(() => {
     if (favorisMovies !== null) {
       dispatch(addID(...favorisMovies));
+
+      console.log(favorisMovies);
+
+      let response = {};
+      let request = {
+        favorisMovies: favorisMovies,
+      };
+      axios
+        .patch("http://localhost:8000/user/update-favmovies", request, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }) // envoyer les id du store et l'utilisateur au back? model user dans le backs
+        .then((user) => (response = user))
+        .catch((error) => (response = error));
+      console.log(response);
+      console.log(token);
+
+      if (response.response) {
+        console.log("problème pour envoyer les favoris");
+      } else {
+        console.log("ça fonctionne");
+      }
     }
   }, [favorisMovies]);
 

@@ -10,21 +10,18 @@ const Main = () => {
   const dispatch = useDispatch();
 
   let inputValue = useSelector((state) => state.input.input);
+  let moovieStore = useSelector((state) => state.movies.Movies);
 
   useEffect(() => {
-    if (inputValue === "") {
+    if (inputValue === "" || inputValue === undefined) {
       axios
-        .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=home"
-        )
-        .then((movie) => setDataMoovies(movie.data.results));
+        .get("http://localhost:8000/moovie/get-all")
+        .then((movie) => setDataMoovies(movie.data.Moovies.data));
     } else {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=d8836d766baef881268636dc25fce46c&language=fr-FR&query=" +
-            `${inputValue}`
-        )
-        .then((movie) => setDataMoovies(movie.data.results));
+      let mooviesFilter = moovieStore.filter((movie) =>
+        movie.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setDataMoovies(mooviesFilter);
     }
   }, [inputValue]);
 
@@ -35,6 +32,7 @@ const Main = () => {
   return (
     <div className="main_flex">
       {dataMoovies &&
+        Array.isArray(dataMoovies) &&
         dataMoovies.map((movie, index) => (
           <Card key={index} movie={movie} isFavPage={false} />
         ))}

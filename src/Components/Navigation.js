@@ -20,6 +20,9 @@ const Navigation = (props) => {
         <NavLink to="/contact" className="nav">
           <p>Contact</p>
         </NavLink>
+        <NavLink to="/inscription" className="nav">
+          <p>S'inscrire</p>
+        </NavLink>
       </div>
     </div>
   );

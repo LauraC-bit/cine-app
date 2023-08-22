@@ -13,6 +13,22 @@ const Favoris = () => {
     (state) => state.favorisMovies.favorisMovies
   );
 
+  // let response = {};
+  //     await axios
+  //       .post("http://localhost:8000/user/user-movies", favorisMovies)
+  //       .then((user) => (response = user))
+  //       .catch((error) => (response = error));
+  //     console.log(response);
+
+  //     if (response.response) {
+  //       console.log(
+  //         "problème pour aller chercher l'utilisateur et ses favoris"
+  //       );
+  //     } else {
+  //       console.log("ça fonctionne");
+  //     }
+  //sert à aller chercher les favoris de l'utilisateur, où le mettre?
+
   let inputValue = useSelector((state) => state.input.input);
 
   const moviesStore = useSelector((state) => state.movies.Movies);

@@ -1,3 +1,33 @@
+.displayflex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 input:last-child {
   cursor: pointer;
+}
+
+.displaynone {
+  display: none;
+}
+
+.send_situation {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 468px;
+    height: 45px;
+    font-family: 'Dancing Script', cursive;
+    font-size: large;
+  }
+  align-self: center;
+  width : 468px;
+  height: 45px;
+  background-color: lightgreen;
+  opacity: 0.8;
+  border-radius: 18px;
+  margin-top: 18px;
+
 }

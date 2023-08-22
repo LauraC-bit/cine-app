@@ -5,6 +5,7 @@ import Accueil from "./pages/Accueil";
 import Error from "./pages/Error";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
+import Inscription from "./pages/Inscription";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/favoris" element={<Favoris />}></Route>
         <Route path="/connexion" element={<Connexion />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/inscription" element={<Inscription />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

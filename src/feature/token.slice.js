@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const tokenSlice = createSlice({
   name: "token",
   initialState: {
-    token: [],
+    token: "",
   },
   reducers: {
     setTokenStore: (state, action) => {
@@ -16,9 +16,9 @@ export const tokenSlice = createSlice({
         action.payload === null
       ) {
         console.log(action.payload);
-        state.token.push(action.payload);
+        state.token = action.payload;
       } else {
-        state.token.push(action.payload);
+        state.token = action.payload;
         localStorage.setItem("token", action.payload);
         console.log(action.payload);
       }

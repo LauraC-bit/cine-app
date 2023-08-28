@@ -17,7 +17,7 @@ const Card = (props) => {
   const [deleteFavorisMovies, setdeleteFavorisMovies] = useState([]);
   const dispatch = useDispatch();
 
-  let token = useSelector((state) => state.token.token[1]); // ou state.token.token[1]?
+  let token = useSelector((state) => state.token.token);
 
   useEffect(() => {
     if (favorisMovies !== null) {

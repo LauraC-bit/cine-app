@@ -1,8 +1,10 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const InscriptionForm = () => {
   const inscription = useRef();
+  const [resultConnexion, setResultConnexion] = useState(100);
+  const [spanConnexion, setSpanConnexion] = useState("");
 
   const registration = async (e) => {
     e.preventDefault();
@@ -22,9 +24,12 @@ const InscriptionForm = () => {
     console.log(response);
 
     if (response.response) {
-      console.log("email ou password incorrect");
+      setSpanConnexion("email ou password incorrect");
+      setResultConnexion(response.status);
     } else {
       localStorage.setItem("token", response.data.token);
+      setSpanConnexion("connexion réussie");
+      setResultConnexion(response.status);
     }
 
     inscription.current.reset();
@@ -41,7 +46,11 @@ const InscriptionForm = () => {
         <input type="text" name="password" required autoComplete="off" />
         <input type="submit" value="Envoyer" />
       </form>
-      <div className="send_situation"></div>
+      <div
+        className={resultConnexion === 200 ? "send_situation" : "displaynone"}
+      >
+        <span className="span">{spanConnexion}</span>
+      </div>
     </div>
   );
 };

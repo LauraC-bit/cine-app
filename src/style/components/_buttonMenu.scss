@@ -4,8 +4,8 @@ $dark: #212121;
   position: relative;
   width: 60px;
   height: 60px;
-  top: 0;
-  left: -18px;
+  top: 26px;
+  left: -46px;
   transition-duration: 0.5s;
 }
 
@@ -150,8 +150,8 @@ $dark: #212121;
   transition: 1s;
   border-radius: 18px;
   @media only screen and (max-width: 950px) {
-      min-width: 50%;
-    }
+    min-width: 50%;
+  }
 }
 
 .displayMenu {

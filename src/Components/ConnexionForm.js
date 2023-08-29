@@ -25,14 +25,16 @@ const ConnexionForm = () => {
     console.log(response);
 
     if (response.response) {
-      setSpanConnexion("email ou password incorrect");
+      setSpanConnexion("Email ou mot de passe incorrect");
       setResultConnexion(response.status);
     } else {
       setConnexionSuccess(response.data.token);
-      console.log(response.data.token);
-      // localStorage.setItem("token", response.data.token); permettait de l'envoyer dans le localStorage avant le tokenslice
-      setSpanConnexion("connexion réussie");
+      localStorage.setItem("token", response.data.token);
+      setSpanConnexion("Connexion réussie, redirection en cours...");
       setResultConnexion(response.status);
+      setTimeout(() => {
+        window.location.href = "http://localhost:3000/profil";
+      }, 2000);
     }
 
     connexion.current.reset();
@@ -49,10 +51,14 @@ const ConnexionForm = () => {
         <input type="email" name="email" required autoComplete="off" />
         <label>Mot de passe</label>
         <input type="text" name="password" required autoComplete="off" />
-        <input type="submit" value="Envoyer" />
+        <button type="submit">Envoyer</button>
       </form>
       <div
-        className={resultConnexion === 200 ? "send_situation" : "displaynone"}
+        className={
+          resultConnexion === 200
+            ? "connexion_successful animate"
+            : "connexion_unsuccessful animate"
+        }
       >
         <span className="span">{spanConnexion}</span>
       </div>

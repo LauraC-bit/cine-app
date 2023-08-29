@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
 import Inscription from "./pages/Inscription";
+import Profil from "./pages/Profil";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/connexion" element={<Connexion />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/inscription" element={<Inscription />}></Route>
+        <Route path="/profil" element={<Profil />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

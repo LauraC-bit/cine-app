@@ -1,0 +1,36 @@
+.profilUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px;
+  h1 {
+    font-size: 3rem;
+  }
+  span {
+    padding: 18px;
+    font-weight: 700;
+    font-size: larger;
+  }
+  .div_button {
+    button {
+      &:last-child {
+        background: lightcoral;
+        color: white;
+      }
+      &:hover {
+        border: 2px solid black;
+      }
+      margin-top: 38px;
+      padding: 15px 32px;
+      font-size: 16px;
+      border-radius: 18px;
+      cursor: pointer;
+      border: none;
+      margin-left: 18px;
+      border: 2px solid white;
+    }
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addID, deleteID } from "../feature/favorite.slice";
+import { setDelete } from "../feature/delete.slice";
 import axios from "axios";
 
 const Card = (props) => {
@@ -18,16 +19,16 @@ const Card = (props) => {
   const dispatch = useDispatch();
 
   let token = useSelector((state) => state.token.token);
+  let deleteFav = useSelector((state) => state.delete.delete);
 
   useEffect(() => {
-    if (favorisMovies !== null) {
+    if (favorisMovies.length !== 0) {
       dispatch(addID(...favorisMovies));
-
-      console.log(favorisMovies);
 
       let response = {};
       let request = {
         favorisMovies: favorisMovies,
+        deleteFromFav: false,
       };
       axios
         .patch("http://localhost:8000/user/update-favmovies", request, {
@@ -35,7 +36,7 @@ const Card = (props) => {
             "Content-Type": "application/json",
             Authorization: token,
           },
-        }) // envoyer les id du store et l'utilisateur au back? model user dans le backs
+        })
         .then((user) => (response = user))
         .catch((error) => (response = error));
       console.log(response);
@@ -134,11 +135,42 @@ const Card = (props) => {
   };
 
   useEffect(() => {
-    dispatch(deleteID(...deleteFavorisMovies));
+    if (deleteFavorisMovies.length !== 0) {
+      console.log(deleteFavorisMovies);
+      let response = {};
+      let request = {
+        favorisMovies: deleteFavorisMovies,
+        deleteFromFav: true,
+      };
+      axios
+        .patch("http://localhost:8000/user/update-favmovies", request, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        })
+        .then((user) => (response = user))
+        .catch((error) => (response = error));
+      console.log(response);
+      console.log(token);
+
+      if (response.response) {
+        console.log("problème pour supprimer le film des favoris");
+      } else {
+        console.log("ça fonctionne");
+      }
+
+      dispatch(deleteID(...deleteFavorisMovies));
+    }
   }, [deleteFavorisMovies]);
 
   const deleteFavorite = (movie) => {
-    setdeleteFavorisMovies([...deleteFavorisMovies, movie]);
+    setdeleteFavorisMovies([movie]);
+    if (deleteFav === false) {
+      dispatch(setDelete(true));
+    } else {
+      dispatch(setDelete(false));
+    }
   };
 
   const handleMouseOver = () => {
@@ -181,14 +213,14 @@ const Card = (props) => {
       {isFavPage ? (
         <button
           className="card_button_style outFav"
-          onClick={() => deleteFavorite(movie.id)}
+          onClick={() => deleteFavorite(movie._id)}
         >
           Retirer des Coups de coeur
         </button>
       ) : (
         <button
           className={isClass ? "card_button_style fav" : "card_button_style"}
-          onClick={() => handleClick(movie.id)}
+          onClick={() => handleClick(movie._id)}
         >
           {buttonValue}
         </button>

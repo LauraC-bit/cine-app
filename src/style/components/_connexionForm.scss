@@ -23,54 +23,35 @@ button {
   display: none;
 }
 
-.connexion_successful {
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.div_connexion {
+  .connexion_successful {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 386px;
+      height: 45px;
+      font-family: "Dancing Script", cursive;
+      font-size: large;
+      background-color: lightgreen;
+      border-radius: 18px;
+    }
+        .connexion_unsuccessful {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 386px;
+          height: 45px;
+          font-family: "Dancing Script", cursive;
+          font-size: large;
+          background-color: lightcoral;
+          border-radius: 18px;
+    
+        }
+    background: #f8e8d1;
+    align-self: center;
     width: 386px;
     height: 45px;
-    font-family: "Dancing Script", cursive;
-    font-size: large;
-  }
-  align-self: center;
-  width: 386px;
-  height: 45px;
-  background-color: lightgreen;
-  border-radius: 18px;
-  margin-top: 18px;
+    margin-top: 18px;
 }
 
-.connexion_unsuccessful {
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 386px;
-    height: 45px;
-    font-family: "Dancing Script", cursive;
-    font-size: large;
-  }
-  align-self: center;
-  width: 386px;
-  height: 45px;
-  background-color: lightcoral;
-  border-radius: 18px;
-  margin-top: 18px;
-}
-
-.animate {
-  animation-duration: 0.5s;
-  animation-name: animate-fade;
-  animation-delay: 0.5s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes animate-fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}

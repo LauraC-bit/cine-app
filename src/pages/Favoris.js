@@ -1,58 +1,52 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../Components/Card";
 import { useEffect } from "react";
 import { useState } from "react";
 import ButtonMenu from "../Components/ButtonMenu";
 import Title from "../Components/Title";
 import Input from "../Components/Input";
+import Footer from "../Components/Footer";
+import axios from "axios";
+import { setFavorisMoviesStore } from "../feature/favorite.slice";
 
 const Favoris = () => {
   const [result, setResult] = useState([]);
-  const moviesFavoris = useSelector(
-    (state) => state.favorisMovies.favorisMovies
-  );
+  const [allMovies, setAllMovies] = useState([]);
 
-  // let response = {};
-  //     await axios
-  //       .post("http://localhost:8000/user/user-movies", favorisMovies)
-  //       .then((user) => (response = user))
-  //       .catch((error) => (response = error));
-  //     console.log(response);
-
-  //     if (response.response) {
-  //       console.log(
-  //         "problème pour aller chercher l'utilisateur et ses favoris"
-  //       );
-  //     } else {
-  //       console.log("ça fonctionne");
-  //     }
-  //sert à aller chercher les favoris de l'utilisateur, où le mettre?
-
+  let token = useSelector((state) => state.token.token);
+  let deleteFav = useSelector((state) => state.delete.delete);
   let inputValue = useSelector((state) => state.input.input);
-
-  const moviesStore = useSelector((state) => state.movies.Movies);
-
-  const moviesFavorisID = moviesFavoris.map((moviesF) => moviesF);
-  const moviesStoreID = moviesStore.map((movies) => movies.id);
-
-  const match = moviesFavorisID.filter((movies) =>
-    moviesStoreID.includes(movies)
-  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setResult(moviesStore.filter((movies) => match.includes(movies.id)));
-  }, [moviesFavoris]);
+    axios
+      .get("http://localhost:8000/user/user-movies", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((user) => {
+        setAllMovies(user.data.user.FavorisMoviesAdd);
+        setResult(user.data.user.FavorisMoviesAdd);
+        dispatch(
+          setFavorisMoviesStore(
+            user.data.user.FavorisMoviesAdd.map((movie) => movie._id)
+          )
+        );
+      })
+      .catch((error) => console.log(error));
+  }, [deleteFav]);
 
   useEffect(() => {
-    setResult(moviesStore.filter((movies) => match.includes(movies.id)));
+    setResult(allMovies);
     if (inputValue !== "" && result !== undefined) {
       setResult(
-        result.filter((movie) =>
+        allMovies.filter((movie) =>
           movie.title.toLowerCase().includes(inputValue.toLowerCase())
         )
       );
-      console.log(result);
     }
   }, [inputValue]);
 
@@ -62,7 +56,7 @@ const Favoris = () => {
       <Title />
       <Input />
       <div className="main_flex">
-        {moviesFavoris.length === 0 ? (
+        {result.length === 0 ? (
           <div className="emptyFavoris">
             <span>Vous n'avez pas de films ajoutés à vos Coup de coeur !</span>
           </div>
@@ -73,6 +67,7 @@ const Favoris = () => {
           ))
         )}
       </div>
+      <Footer />
     </div>
   );
 };

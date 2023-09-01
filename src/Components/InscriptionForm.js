@@ -24,19 +24,23 @@ const InscriptionForm = () => {
     console.log(response);
 
     if (response.response) {
-      setSpanConnexion("email ou password incorrect");
-      setResultConnexion(response.status);
+      setSpanConnexion("Un utilisateur avec cet e-mail existe déjà");
+      setResultConnexion(response.response.status);
+      console.log(response.response.status);
     } else {
       localStorage.setItem("token", response.data.token);
-      setSpanConnexion("connexion réussie");
+      setSpanConnexion("Inscription réussie, redirection en cours...");
       setResultConnexion(response.status);
+      setTimeout(() => {
+        window.location.href = "http://localhost:3000/favoris";
+      }, 2000);
     }
 
     inscription.current.reset();
   };
 
   return (
-    <div>
+    <div className="displayflex">
       <form ref={inscription} onSubmit={registration}>
         <label>Pseudo</label>
         <input type="text" name="pseudo" required autoComplete="off" />
@@ -44,12 +48,20 @@ const InscriptionForm = () => {
         <input type="email" name="email" required autoComplete="off" />
         <label>Mot de passe</label>
         <input type="text" name="password" required autoComplete="off" />
-        <input type="submit" value="Envoyer" />
+        <button type="submit">Envoyer</button>
       </form>
-      <div
-        className={resultConnexion === 200 ? "send_situation" : "displaynone"}
-      >
-        <span className="span">{spanConnexion}</span>
+      <div className="div_inscription">
+        <span
+          className={
+            resultConnexion && resultConnexion === 200
+              ? "inscription_success"
+              : resultConnexion && resultConnexion === 400
+              ? "inscription_unsuccess"
+              : "no_class"
+          }
+        >
+          {spanConnexion}
+        </span>
       </div>
     </div>
   );

@@ -19,18 +19,7 @@ export const favorisSlice = createSlice({
         state.favorisMovies.push(action.payload);
       }
     },
-    // editPicture: (state, action) => {
-    //   state.pictures = state.pictures.map((pic) => {
-    //     if (pic.id === action.payload[1]) {
-    //       return {
-    //         ...pic,
-    //         artist: action.payload[0],
-    //       };
-    //     } else {
-    //       return pic;
-    //     }
-    //   });
-    // },
+
     deleteID: (state, action) => {
       state.favorisMovies = state.favorisMovies.filter(
         (moviesID) => moviesID !== action.payload

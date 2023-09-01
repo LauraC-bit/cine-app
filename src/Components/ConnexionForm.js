@@ -26,7 +26,8 @@ const ConnexionForm = () => {
 
     if (response.response) {
       setSpanConnexion("Email ou mot de passe incorrect");
-      setResultConnexion(response.status);
+      setResultConnexion(response.response.status);
+      console.log(response.response.status);
     } else {
       setConnexionSuccess(response.data.token);
       localStorage.setItem("token", response.data.token);
@@ -53,14 +54,18 @@ const ConnexionForm = () => {
         <input type="text" name="password" required autoComplete="off" />
         <button type="submit">Envoyer</button>
       </form>
-      <div
-        className={
-          resultConnexion === 200
-            ? "connexion_successful animate"
-            : "connexion_unsuccessful animate"
-        }
-      >
-        <span className="span">{spanConnexion}</span>
+      <div className="div_connexion">
+        <span
+          className={
+            resultConnexion && resultConnexion === 200
+              ? "connexion_successful"
+              : resultConnexion && resultConnexion === 400
+              ? "connexion_unsuccessful"
+              : "no_class"
+          }
+        >
+          {spanConnexion}
+        </span>
       </div>
     </div>
   );

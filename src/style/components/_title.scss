@@ -21,5 +21,11 @@
     @media only screen and (max-width: 950px) {
       font-size: calc(4rem + 0.6vmin);
     }
+    @media only screen and (max-width: 630px) {
+      font-size: calc(3rem + 0.6vmin);
+    }
+    @media only screen and (max-width: 415px) {
+      font-size: calc(2rem + 0.6vmin);
+    }
   }
 }

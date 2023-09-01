@@ -33,6 +33,7 @@ const Main = () => {
     <div className="main_flex">
       {dataMoovies &&
         Array.isArray(dataMoovies) &&
+        dataMoovies.length !== 0 &&
         dataMoovies.map((movie, index) => (
           <Card key={index} movie={movie} isFavPage={false} />
         ))}

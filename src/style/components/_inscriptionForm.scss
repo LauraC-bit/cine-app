@@ -1,0 +1,32 @@
+.div_inscription {
+
+    .inscription_success {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 386px;
+            height: 45px;
+            font-family: "Dancing Script", cursive;
+            font-size: large;
+            background-color: lightgreen;
+            border-radius: 18px;
+        }
+    
+        .inscription_unsuccess {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 386px;
+            height: 45px;
+            font-family: "Dancing Script", cursive;
+            font-size: large;
+            background-color: lightcoral;
+            border-radius: 18px;
+        }
+                background: #f8e8d1;
+                align-self: center;
+                width: 386px;
+                height: 45px;
+                margin-top: 18px;
+
+}

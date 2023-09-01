@@ -4,6 +4,7 @@ import Title from "../Components/Title";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteToken } from "../feature/token.slice";
+import Footer from "../Components/Footer";
 
 const Profil = () => {
   const token = useSelector((state) => state.token.token);
@@ -56,6 +57,7 @@ const Profil = () => {
           <button onClick={handleDelete}>Supprimer mon compte</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

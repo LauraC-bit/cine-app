@@ -31,7 +31,9 @@ const Footer = () => {
           <a href="http://localhost:3000/contact">Ecrivez-nous!</a>
         </li>
         <li className="list-inline-item">
-          <a href="#">Privacy Policy</a>
+          <a href="http://localhost:3000/confidentialite">
+            Politique de confidentialité
+          </a>
         </li>
       </ul>
       <p className="copyright">Laura Comte © 2023</p>

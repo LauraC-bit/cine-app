@@ -7,6 +7,7 @@ import Connexion from "./pages/Connexion";
 import Contact from "./pages/Contact";
 import Inscription from "./pages/Inscription";
 import Profil from "./pages/Profil";
+import Confidentialite from "./pages/Confidentialite";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/inscription" element={<Inscription />}></Route>
         <Route path="/profil" element={<Profil />}></Route>
+        <Route path="/confidentialite" element={<Confidentialite />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

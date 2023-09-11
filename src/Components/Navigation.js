@@ -9,6 +9,7 @@ const Navigation = (props) => {
   const user = useSelector((state) => state.token.token);
   const [userConnected, setUserConnected] = useState("");
   const [userDisconnected, setUserDisconnected] = useState("");
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
 
   useEffect(() => {
     if (user === "") {
@@ -24,22 +25,22 @@ const Navigation = (props) => {
       <div className={openMenu ? "navigation_menu" : "displayNav"}>
         <img src={icon} alt="logo-cinema" className="icon" />
         <NavLink to="/" className="nav">
-          <p>Accueil</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>Accueil</p>
         </NavLink>
         <NavLink to="/profil" className={userConnected}>
-          <p>Profil</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>Profil</p>
         </NavLink>
         <NavLink to="/inscription" className={userDisconnected}>
-          <p>S'inscrire</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>S'inscrire</p>
         </NavLink>
         <NavLink to="/favoris" className={userConnected}>
-          <p>Coup de coeur</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>Coup de coeur</p>
         </NavLink>
         <NavLink to="/connexion" className={userDisconnected}>
-          <p>Se connecter</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>Se connecter</p>
         </NavLink>
         <NavLink to="/contact" className="nav">
-          <p>Ecrivez-nous!</p>
+          <p className={isDarkModeOn ? "white_text" : ""}>Ecrivez-nous!</p>
         </NavLink>
       </div>
     </div>

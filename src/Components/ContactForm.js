@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useSelector } from "react-redux";
 
 const Form = () => {
   const form = useRef();
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -39,11 +41,11 @@ const Form = () => {
   return (
     <div className="form-container">
       <form ref={form} onSubmit={sendEmail}>
-        <label>Nom</label>
+        <label className={isDarkModeOn ? "white_text" : ""}>Nom</label>
         <input type="text" name="name" required autoComplete="off" />
-        <label>Email</label>
+        <label className={isDarkModeOn ? "white_text" : ""}>Email</label>
         <input type="email" name="email" required autoComplete="off" />
-        <label>Message</label>
+        <label className={isDarkModeOn ? "white_text" : ""}>Message</label>
         <textarea name="message" required />
         <button type="submit">Envoyer</button>
       </form>

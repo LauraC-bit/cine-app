@@ -16,6 +16,7 @@ const Card = (props) => {
   const [active, setActive] = useState(false);
   const [favorisMovies, setFavorisMovies] = useState([]);
   const [deleteFavorisMovies, setdeleteFavorisMovies] = useState([]);
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   const dispatch = useDispatch();
 
   let token = useSelector((state) => state.token.token);
@@ -116,7 +117,14 @@ const Card = (props) => {
       }
     }
     return genreArray.map((genre) => (
-      <li key={genre} className="card_ul_li">
+      <li
+        key={genre}
+        className={
+          isDarkModeOn
+            ? "darkMode white_text gender_style"
+            : "gender_style gender_color"
+        }
+      >
         {genre}
       </li>
     ));
@@ -177,14 +185,14 @@ const Card = (props) => {
 
   return (
     <div
-      className="card"
+      className={isDarkModeOn ? "card darkMode" : "card"}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
       <div className={active ? "visible" : "hidden"}>
         <h4>Resume : </h4> <p>{movie.overview ? movie.overview : "Inconnu"}</p>
       </div>
-      <h1>{movie.title}</h1>
+      <h1 className={isDarkModeOn ? "white_text" : ""}>{movie.title}</h1>
       <img
         src={
           movie.poster_path
@@ -193,7 +201,7 @@ const Card = (props) => {
         }
         alt={"affiche de " + movie.title}
       />
-      <p>
+      <p className={isDarkModeOn ? "white_text" : ""}>
         Date de sortie :{" "}
         {movie.release_date
           ? dateFr[2] + "/" + dateFr[1] + "/" + dateFr[0]
@@ -201,7 +209,9 @@ const Card = (props) => {
       </p>
       <p>
         <span> &#11088; </span>
-        {Math.round(movie.vote_average * 10) / 10 + "/10"}
+        <span className={isDarkModeOn ? "white_text" : ""}>
+          {Math.round(movie.vote_average * 10) / 10 + "/10"}
+        </span>
       </p>
       <ul className="card_ul">{movie.genre_ids ? genreFinder() : null}</ul>
       {isFavPage ? (

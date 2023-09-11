@@ -47,11 +47,23 @@ const ButtonMenu = () => {
             data-menu="1"
             onClick={() => HandleClick()}
           >
-            <div className="icon-left"></div>
-            <div className="icon-right"></div>
+            <div
+              className={isDarkModeOn ? "icon-left_white" : "icon-left_black"}
+            ></div>
+            <div
+              className={isDarkModeOn ? "icon-right_white" : "icon-right_black"}
+            ></div>
           </div>
         </div>
-        <div className={openMenu ? "menu" : "displayMenu"}>
+        <div
+          className={
+            openMenu && isDarkModeOn
+              ? "menu darkMode"
+              : openMenu
+              ? "menu"
+              : "displayMenu"
+          }
+        >
           <Navigation openMenu={openMenu} />
         </div>
       </div>

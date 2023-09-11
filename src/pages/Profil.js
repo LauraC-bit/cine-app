@@ -81,17 +81,7 @@ const Profil = () => {
   }, []);
 
   const handleDarkMode = () => {
-    setDarkModeSpan("ON");
-    if (darkModeSpan === "OFF") {
-      setDarkModeSpan("ON");
-      setIconDarkMode("icon-darkModeOFF");
-    } else {
-      setDarkModeSpan("OFF");
-      setIconDarkMode("icon-darkModeON");
-    }
-
-    dispatch(setDarkMode(true));
-    if (isDarkModeOn === false) {
+    if (darkModeSpan === "OFF" && isDarkModeOn === false) {
       dispatch(setDarkMode(true));
     } else {
       dispatch(setDarkMode(false));
@@ -99,39 +89,48 @@ const Profil = () => {
   };
 
   return (
-    <div>
+    <div className={isDarkModeOn ? "darkMode" : ""}>
       <ButtonMenu />
       <Title />
       <div className="profilUser">
-        <h1>Mon profil</h1>
+        <h1 className={isDarkModeOn ? "white_text" : ""}>Mon profil</h1>
         <div className="divDarkMode">
-          <i className={iconDarkMode} onClick={handleDarkMode}></i>
-          <span>Mode Sombre : {darkModeSpan}</span>
+          <i
+            className={isDarkModeOn ? "icon-darkModeOFF" : "icon-darkModeON"}
+            onClick={handleDarkMode}
+          ></i>
+          <span className={isDarkModeOn ? "white_text" : ""}>
+            Mode Sombre : {isDarkModeOn ? "ON" : "OFF"}
+          </span>
         </div>
         <form className="formProfil" ref={modifyForm} onSubmit={userInfos}>
           <span>
-            <span>Pseudo : </span>
-            {modify === true ? (
-              <input
-                className="inputModify"
-                name="pseudo"
-                placeholder={user.pseudo}
-              ></input>
-            ) : (
-              user.pseudo
-            )}
+            <span className={isDarkModeOn ? "white_text" : ""}>
+              Pseudo :{" "}
+              {modify === true ? (
+                <input
+                  className="inputModify"
+                  name="pseudo"
+                  placeholder={user.pseudo}
+                ></input>
+              ) : (
+                user.pseudo
+              )}
+            </span>
           </span>
           <span>
-            <span>Adresse e-mail : </span>
-            {modify === true ? (
-              <input
-                className="inputModify"
-                name="email"
-                placeholder={user.email}
-              ></input>
-            ) : (
-              user.email
-            )}
+            <span className={isDarkModeOn ? "white_text" : ""}>
+              Adresse e-mail :{" "}
+              {modify === true ? (
+                <input
+                  className="inputModify"
+                  name="email"
+                  placeholder={user.email}
+                ></input>
+              ) : (
+                user.email
+              )}
+            </span>
           </span>
           {modify === true ? (
             <span>

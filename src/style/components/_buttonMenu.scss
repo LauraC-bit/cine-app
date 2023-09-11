@@ -9,35 +9,6 @@ $dark: #212121;
   transition-duration: 0.5s;
 }
 
-@mixin icon($height, $width) {
-  transition-duration: 0.5s;
-  position: absolute;
-  height: $height;
-  width: $width;
-  top: 30px;
-  background-color: $dark;
-}
-
-@mixin icon-before($height, $width, $top) {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: $width;
-  height: $height;
-  background-color: $dark;
-  content: "";
-  top: $top;
-}
-
-@mixin icon-after($height, $width, $top) {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: $width;
-  height: $height;
-  background-color: $dark;
-  content: "";
-  top: $top;
-}
-
 //-----------------------------------------------
 
 .placement_btn {
@@ -50,16 +21,33 @@ $dark: #212121;
   @include btn(0px, 100px);
   z-index: 999;
 
-  .icon-left {
-    @include icon(8px, 30px);
+  .icon-left_black {
     left: 0px;
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 8px;
+    width: 30px;
+    top: 30px;
+    background-color: $dark;
 
     &:before {
-      @include icon-before(8px, 30px, -20px);
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 8px;
+    background-color: $dark;
+    content: "";
+    top: -20px;
     }
 
     &:after {
-      @include icon-after(8px, 30px, 20px);
+      transition-duration: 0.5s;
+      position: absolute;
+      width: 30px;
+      height: 8px;
+      background-color: $dark;
+      content: "";
+      top: 20px;
     }
 
     &:hover {
@@ -67,21 +55,102 @@ $dark: #212121;
     }
   }
 
-  .icon-right {
-    @include icon(8px, 30px);
+    .icon-left_white {
+      left: 0px;
+      transition-duration: 0.5s;
+      position: absolute;
+      height: 8px;
+      width: 30px;
+      top: 30px;
+      background-color: white;
+  
+      &:before {
+        transition-duration: 0.5s;
+        position: absolute;
+        width: 30px;
+        height: 8px;
+        background-color: white;
+        content: "";
+        top: -20px;
+      }
+  
+      &:after {
+        transition-duration: 0.5s;
+        position: absolute;
+        width: 30px;
+        height: 8px;
+        background-color: white;
+        content: "";
+        top: 20px;
+      }
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  .icon-right_black {
     left: 30px;
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 8px;
+    width: 30px;
+    top: 30px;
+    background-color: $dark;
 
     &:before {
-      @include icon-before(8px, 30px, -20px);
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 8px;
+    background-color: $dark;
+    content: "";
+    top: -20px;
     }
 
     &:after {
-      @include icon-after(8px, 30px, 20px);
+      transition-duration: 0.5s;
+      position: absolute;
+      width: 30px;
+      height: 8px;
+      background-color: $dark;
+      content: "";
+      top: 20px;
     }
   }
 
+    .icon-right_white {
+      left: 30px;
+      transition-duration: 0.5s;
+      position: absolute;
+      height: 8px;
+      width: 30px;
+      top: 30px;
+      background-color: white;
+  
+      &:before {
+        transition-duration: 0.5s;
+        position: absolute;
+        width: 30px;
+        height: 8px;
+        background-color: white;
+        content: "";
+        top: -20px;
+      }
+  
+      &:after {
+        transition-duration: 0.5s;
+        position: absolute;
+        width: 30px;
+        height: 8px;
+        background-color: white;
+        content: "";
+        top: 20px;
+      }
+    }
+
   &.open {
-    .icon-left {
+    .icon-left_black {
       transition-duration: 0.5s;
       background: transparent;
 
@@ -94,7 +163,20 @@ $dark: #212121;
       }
     }
 
-    .icon-right {
+    .icon-left_white {
+      transition-duration: 0.5s;
+      background: transparent;
+    
+      &:before {
+        transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+      }
+    
+      &:after {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+      }
+    }
+
+    .icon-right_black {
       transition-duration: 0.5s;
       background: transparent;
 
@@ -102,6 +184,19 @@ $dark: #212121;
         transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
       }
 
+      &:after {
+        transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+      }
+    }
+
+    .icon-right_white {
+      transition-duration: 0.5s;
+      background: transparent;
+    
+      &:before {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+      }
+    
       &:after {
         transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
       }
@@ -162,3 +257,5 @@ $dark: #212121;
 .white {
   background-color: white;
 }
+
+

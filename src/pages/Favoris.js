@@ -17,6 +17,7 @@ const Favoris = () => {
   let token = useSelector((state) => state.token.token);
   let deleteFav = useSelector((state) => state.delete.delete);
   let inputValue = useSelector((state) => state.input.input);
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,14 +52,16 @@ const Favoris = () => {
   }, [inputValue]);
 
   return (
-    <div>
+    <div className={isDarkModeOn ? "darkMode" : ""}>
       <ButtonMenu />
       <Title />
       <Input />
       <div className="main_flex">
         {result.length === 0 ? (
           <div className="emptyFavoris">
-            <span>Vous n'avez pas de films ajoutés à vos Coup de coeur !</span>
+            <span className={isDarkModeOn ? "white_text" : ""}>
+              Vous n'avez pas de films ajoutés à vos Coup de coeur !
+            </span>
           </div>
         ) : (
           result &&

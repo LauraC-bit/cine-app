@@ -9,12 +9,11 @@
     border-radius: 8px;
   }
   &_ul {
-    li {
+    .gender_style {
       padding: 8px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
         rgba(0, 0, 0, 0.23) 0px 1px 0px;
       border-radius: 8px;
-      background: #f8e8d1;
       margin: 8px;
     }
     list-style: none;

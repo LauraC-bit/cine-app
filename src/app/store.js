@@ -4,6 +4,7 @@ import favorisSlice from "../feature/favorite.slice";
 import moviesSlice from "../feature/movies.slice";
 import tokenSlice from "../feature/token.slice";
 import deleteSlice from "../feature/delete.slice";
+import darkModeSlice from "../feature/darkMode.slice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     movies: moviesSlice,
     token: tokenSlice,
     delete: deleteSlice,
+    darkMode: darkModeSlice,
   },
 });

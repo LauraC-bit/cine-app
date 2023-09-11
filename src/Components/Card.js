@@ -154,12 +154,6 @@ const Card = (props) => {
       console.log(response);
       console.log(token);
 
-      if (response.response) {
-        console.log("problème pour supprimer le film des favoris");
-      } else {
-        console.log("ça fonctionne");
-      }
-
       dispatch(deleteID(...deleteFavorisMovies));
     }
   }, [deleteFavorisMovies]);

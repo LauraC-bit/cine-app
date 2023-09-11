@@ -7,9 +7,13 @@
     font-size: 3rem;
   }
   span {
-    padding: 18px;
-    font-weight: 700;
+    span {
+      font-weight: 700;
+    }
     font-size: larger;
+    line-height: 3rem;
+    padding-left: 8px;
+    margin-top: 8px;
   }
   .div_button {
     button {
@@ -33,4 +37,58 @@
     display: flex;
     flex-direction: column;
   }
+}
+
+.inputModify {
+  border-radius: 8px;
+  font-size: large;
+  line-height: 3rem;
+  padding-left: 8px;
+  margin-top: 8px;
+  min-width: 500px;
+}
+
+.formProfil {
+  display: flex;
+  flex-direction: column;
+  max-width: 521px;
+  margin: 0 auto;
+  padding: 8px;
+}
+
+.buttonValidate {
+  cursor: pointer;
+  margin-top: 58px;
+  margin-left: 16px;
+  padding: 15px 32px;
+  font-size: 16px;
+  border-radius: 18px;
+  border: none;
+  border: 2px solid white;
+  min-width: 350px;
+  align-self: center;
+  background: lightgreen;
+  color: white;
+}
+
+.icon-darkModeON {
+  background: url(../../assets/day-mode.png) no-repeat center bottom/cover;
+  display: block;
+  min-width: 40px;
+  min-height: 25px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.icon-darkModeOFF {
+  background: url(../../assets/night-mode.png) no-repeat center bottom/cover;
+  display: block;
+  min-width: 40px;
+  min-height: 25px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.divDarkMode {
+  display: flex;
 }

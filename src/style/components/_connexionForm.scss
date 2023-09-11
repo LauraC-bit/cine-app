@@ -23,35 +23,48 @@ button {
   display: none;
 }
 
-
 .div_connexion {
   .connexion_successful {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 386px;
-      height: 45px;
-      font-family: "Dancing Script", cursive;
-      font-size: large;
-      background-color: lightgreen;
-      border-radius: 18px;
-    }
-        .connexion_unsuccessful {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 386px;
-          height: 45px;
-          font-family: "Dancing Script", cursive;
-          font-size: large;
-          background-color: lightcoral;
-          border-radius: 18px;
-    
-        }
-    background: #f8e8d1;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 386px;
     height: 45px;
-    margin-top: 18px;
+    font-family: "Dancing Script", cursive;
+    font-size: large;
+    background-color: lightgreen;
+    border-radius: 18px;
+  }
+  .connexion_unsuccessful {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 386px;
+    height: 45px;
+    font-family: "Dancing Script", cursive;
+    font-size: large;
+    background-color: lightcoral;
+    border-radius: 18px;
+  }
+  background: #f8e8d1;
+  align-self: center;
+  width: 386px;
+  height: 45px;
+  margin-top: 18px;
 }
 
+.hidden_password {
+  background: url("../../assets/hide.png") no-repeat center bottom/cover;
+  min-width: 25px;
+  min-height: 25px;
+  max-width: 25px;
+  max-height: 25px;
+  display: block;
+  margin-left: -43px;
+  margin-top: 22px;
+  cursor: pointer;
+}
+
+.flexinput {
+  display: flex;
+}

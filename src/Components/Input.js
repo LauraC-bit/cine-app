@@ -5,11 +5,22 @@ import { setInputValueStore } from "../feature/input.slice";
 
 const Input = () => {
   const [inputValue, setInputValue] = useState("");
-  const [userConnected, setUserConnected] = useState("");
+  const [userConnected, setUserConnected] = useState("User disconnected");
   const [linkConnexion, setLinkConnexion] = useState("");
   const user = useSelector((state) => state.token.token);
 
   const dispatch = useDispatch();
+
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
+  const [iconDarkMode, setIconDarkMode] = useState("div_profil");
+
+  useEffect(() => {
+    if (isDarkModeOn === false) {
+      setIconDarkMode("div_profil");
+    } else {
+      setIconDarkMode("div_profilDarkMode");
+    }
+  }, []);
 
   useEffect(() => {
     if (user === "") {
@@ -28,7 +39,7 @@ const Input = () => {
 
   return (
     <div className="display">
-      <div className="div_profil">
+      <div className={iconDarkMode}>
         <a href={linkConnexion}>
           <div className="profil">{userConnected}</div>
         </a>

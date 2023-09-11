@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import Navigation from "./Navigation";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const ButtonMenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [blackBackground, setBlackBackground] = useState(false);
+
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
+  const [iconDarkMode, setIconDarkMode] = useState("");
+
+  useEffect(() => {
+    if (isDarkModeOn === false) {
+      setIconDarkMode("");
+    } else {
+      setIconDarkMode("white");
+    }
+  }, []);
 
   const HandleClick = () => {
     if (openMenu === false) {

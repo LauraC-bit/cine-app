@@ -1,66 +1,73 @@
 .footer-basic {
-    .social {
-        a {
-            .icon-instagram {
-                &:hover {
-                    transform: scale(1.2);
-                }
-            min-width: 25px;
-            min-height: 25px;
-            background: url("../../assets/instagram.png") no-repeat center bottom/cover;
-            display: block;
-            margin: 8px;
-            }
-            .icon-snapchat {
-                &:hover {
-                        transform: scale(1.2);
-                    }
-            min-width: 25px;
-            min-height: 25px;
-            background: url("../../assets/snapchat.png") no-repeat center bottom/cover;
-            display: block;
-            margin: 8px;
-            }
-            .icon-twitter {
-                &:hover {
-                        transform: scale(1.2);
-                    }
-            min-width: 25px;
-            min-height: 25px;
-            background: url("../../assets/twitter.png") no-repeat center bottom/cover;
-            display: block;
-            margin: 8px;
-            }
-            .icon-facebook {
-                &:hover {
-                        transform: scale(1.2);
-                    }
-            min-width: 25px;
-            min-height: 25px;
-            background: url("../../assets/facebook.png") no-repeat center bottom/cover;
-            display: block;
-            margin: 8px;
-            }
-            min-width: 25px;
-            min-height: 25px;
+  .social {
+    a {
+      .icon-instagram {
+        &:hover {
+          transform: scale(1.2);
         }
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 18px;
+        min-width: 25px;
+        min-height: 25px;
+        background: url("../../assets/instagram.png") no-repeat center
+          bottom/cover;
+        display: block;
+        margin: 8px;
+      }
+      .icon-snapchat {
+        &:hover {
+          transform: scale(1.2);
+        }
+        min-width: 25px;
+        min-height: 25px;
+        background: url("../../assets/snapchat.png") no-repeat center
+          bottom/cover;
+        display: block;
+        margin: 8px;
+      }
+      .icon-twitter {
+        &:hover {
+          transform: scale(1.2);
+        }
+        min-width: 25px;
+        min-height: 25px;
+        background: url("../../assets/twitter.png") no-repeat center
+          bottom/cover;
+        display: block;
+        margin: 8px;
+      }
+      .icon-facebook {
+        &:hover {
+          transform: scale(1.2);
+        }
+        min-width: 25px;
+        min-height: 25px;
+        background: url("../../assets/facebook.png") no-repeat center
+          bottom/cover;
+        display: block;
+        margin: 8px;
+      }
+      min-width: 25px;
+      min-height: 25px;
     }
-    li {
-            padding: 0 10px;
-        }
-    ul {
-        a {
-            &:hover {
-                    opacity: 1;
-                }
-            color: whitesmoke;
-            text-decoration: none;
-            opacity: 0.8;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+  }
+  li {
+    &:hover {
+      transform: scale(1.2);
+    }
+    padding: 0 10px;
+  }
+  ul {
+    a {
+      &:hover {
+        opacity: 1;
+      }
+      color: whitesmoke;
+      text-decoration: none;
+      opacity: 0.8;
+    }
     padding: 0;
     list-style: none;
     text-align: center;
@@ -69,15 +76,15 @@
     margin-bottom: 0;
     display: flex;
     justify-content: space-evenly;
-    }
-    .copyright {
-            margin-top: 15px;
-            text-align: end;
-            font-size: 13px;
-            color: whitesmoke;
-            margin-bottom: 0;
-            padding: 8px;
-    }
-    background: burlywood;
-    margin-top: 50vh;
+  }
+  .copyright {
+    margin-top: 15px;
+    text-align: end;
+    font-size: 13px;
+    color: whitesmoke;
+    margin-bottom: 0;
+    padding: 8px;
+  }
+  background: burlywood;
+  margin-top: 50vh;
 }

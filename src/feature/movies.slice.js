@@ -29,29 +29,7 @@ export const moviesSlice = createSlice({
       } else {
         console.log("!action.payload.length !== 0");
       }
-
-      // if () {
-
-      // }
-      // state.Movies.push(...action.payload);
     },
-    // editPicture: (state, action) => {
-    //   state.pictures = state.pictures.map((pic) => {
-    //     if (pic.id === action.payload[1]) {
-    //       return {
-    //         ...pic,
-    //         artist: action.payload[0],
-    //       };
-    //     } else {
-    //       return pic;
-    //     }
-    //   });
-    // },
-    // deletePicture: (state, action) => {
-    //   state.pictures = state.pictures.filter(
-    //     (pic) => pic.id !== action.payload
-    //   );
-    // },
   },
 });
 

@@ -30,6 +30,19 @@
   }
 }
 
+.div_profilDarkMode {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  max-height: 50px;
+  min-width: 50%;
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .input {
   &:hover {
     border: 2px solid black;

@@ -9,6 +9,7 @@ const ConnexionForm = () => {
   const [resultConnexion, setResultConnexion] = useState(100);
   const [spanConnexion, setSpanConnexion] = useState("");
   const [connexionSuccess, setConnexionSuccess] = useState("");
+  const [hidden, setHidden] = useState("password");
   const dispatch = useDispatch();
 
   const authentification = async (e) => {
@@ -41,6 +42,14 @@ const ConnexionForm = () => {
     connexion.current.reset();
   };
 
+  const showPassword = () => {
+    if (hidden === "text") {
+      setHidden("password");
+    } else {
+      setHidden("text");
+    }
+  };
+
   useEffect(() => {
     dispatch(addToken(connexionSuccess));
   }, [connexionSuccess]);
@@ -51,7 +60,10 @@ const ConnexionForm = () => {
         <label>Email</label>
         <input type="email" name="email" required autoComplete="off" />
         <label>Mot de passe</label>
-        <input type="text" name="password" required autoComplete="off" />
+        <div className="flexinput">
+          <input type={hidden} name="password" required autoComplete="off" />
+          <i className="hidden_password" onClick={showPassword}></i>
+        </div>
         <button type="submit">Envoyer</button>
       </form>
       <div className="div_connexion">

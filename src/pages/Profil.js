@@ -13,12 +13,10 @@ const Profil = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({ password: "", pseudo: "", email: "" });
   const [modify, setModify] = useState(false);
-  const [darkModeSpan, setDarkModeSpan] = useState("OFF");
-  const [iconDarkMode, setIconDarkMode] = useState("icon-darkModeON");
   const modifyForm = useRef();
 
   const handleDisconnect = () => {
-    dispatch(deleteToken("")); //WORK
+    dispatch(deleteToken(""));
     setTimeout(() => {
       window.location.href = "http://localhost:3000/connexion";
     }, 1000);
@@ -81,10 +79,13 @@ const Profil = () => {
   }, []);
 
   const handleDarkMode = () => {
-    if (darkModeSpan === "OFF" && isDarkModeOn === false) {
+    if (isDarkModeOn === false) {
       dispatch(setDarkMode(true));
+
+      //ici? Envoyez au back associé à l'utilisateur le darkMode One ou OFF, en update?
     } else {
       dispatch(setDarkMode(false));
+      // le mettre aussi ici? en update ?
     }
   };
 
@@ -133,7 +134,7 @@ const Profil = () => {
             </span>
           </span>
           {modify === true ? (
-            <span>
+            <span className={isDarkModeOn ? "white_text" : ""}>
               Mot de passe :{" "}
               <input className="inputModify" name="password"></input>
             </span>

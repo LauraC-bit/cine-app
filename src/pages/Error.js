@@ -1,13 +1,13 @@
 import React from "react";
 import ButtonHome from "../Components/ButtonHome";
-import Footer from "../Components/Footer";
+import { useSelector } from "react-redux";
 
 const Error = () => {
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   return (
-    <div className="error">
-      <h1>Error 404</h1>
+    <div className={isDarkModeOn ? "error darkMode" : "error"}>
+      <h1 className={isDarkModeOn ? "white_text" : ""}>Error 404</h1>
       <ButtonHome />
-      <Footer />
     </div>
   );
 };

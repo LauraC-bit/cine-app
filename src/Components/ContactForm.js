@@ -30,7 +30,7 @@ const Form = () => {
         (error) => {
           console.log(error.text);
           formMessage.innerHTML =
-            "<p class='error'>Une erreur s'est produite, veuillez réessayer.</p>";
+            "<p class='error_contactForm'>Une erreur s'est produite, veuillez réessayer.</p>";
           setTimeout(() => {
             formMessage.innerHTML = "";
           }, 3000);
@@ -42,12 +42,26 @@ const Form = () => {
     <div className="form-container">
       <form ref={form} onSubmit={sendEmail}>
         <label className={isDarkModeOn ? "white_text" : ""}>Nom</label>
-        <input type="text" name="name" required autoComplete="off" />
+        <input
+          className="inputForm"
+          type="text"
+          name="name"
+          required
+          autoComplete="off"
+        />
         <label className={isDarkModeOn ? "white_text" : ""}>Email</label>
-        <input type="email" name="email" required autoComplete="off" />
+        <input
+          className="inputForm"
+          type="email"
+          name="email"
+          required
+          autoComplete="off"
+        />
         <label className={isDarkModeOn ? "white_text" : ""}>Message</label>
         <textarea name="message" required />
-        <button type="submit">Envoyer</button>
+        <button className="button_Form" type="submit">
+          Envoyer
+        </button>
       </form>
       <div className="form-message"></div>
     </div>

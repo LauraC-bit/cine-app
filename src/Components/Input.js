@@ -26,7 +26,6 @@ const Input = () => {
     if (user === "") {
       setUserConnected("User disconnected");
       setLinkConnexion("http://localhost:3000/connexion");
-      console.log(user);
     } else {
       setUserConnected("User connected");
       setLinkConnexion("http://localhost:3000/profil");

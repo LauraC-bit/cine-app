@@ -2,13 +2,21 @@ import React from "react";
 import Title from "../Components/Title";
 import ButtonMenu from "../Components/ButtonMenu";
 import Footer from "../Components/Footer";
+import { useSelector } from "react-redux";
 
 const Confidentialite = () => {
+  const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   return (
-    <div className="displayflex">
+    <div className={isDarkModeOn ? "displayflex darkMode" : "displayflex"}>
       <ButtonMenu />
       <Title />
-      <span className="confidentialite_style">
+      <span
+        className={
+          isDarkModeOn
+            ? "white_text confidentialite_style"
+            : "confidentialite_style"
+        }
+      >
         <h3>
           LA PRÉSENTE POLITIQUE DE CONFIDENTIALITÉ A POUR OBJET DE FOURNIR À
           L'UTILISATEUR UNE INFORMATION COMPLÈTE SUR LE TRAITEMENT RÉALISÉ PAR

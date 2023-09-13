@@ -5,7 +5,7 @@ form {
     padding-top: 8px;
     padding-bottom: 8px;
   }
-  input {
+  .inputForm {
     &:lastchild {
       cursor: pointer;
     }
@@ -30,7 +30,7 @@ form {
 }
 
 .sucess,
-.error {
+.error_contactForm {
   width: 400px;
   margin: 0 auto;
   display: flex;
@@ -43,6 +43,6 @@ form {
   background: lightgreen;
 }
 
-.error {
+.error_contactForm {
   background: lightcoral;
 }

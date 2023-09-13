@@ -16,9 +16,7 @@ export const moviesSlice = createSlice({
 
           for (let i = 0; i < action.payload.length; i++) {
             if (uniqueIds.includes(action.payload[i].id)) {
-              console.log(
-                "Movie " + action.payload[i].title + "already in store" //ça ne passe pas la dedans ça continue à ajouter dans favoriesMovies et favoris l24
-              );
+              console.log();
             } else {
               state.Movies.push(action.payload[i]);
             }
@@ -26,8 +24,6 @@ export const moviesSlice = createSlice({
         } else {
           state.Movies.push(...action.payload);
         }
-      } else {
-        console.log("!action.payload.length !== 0");
       }
     },
   },

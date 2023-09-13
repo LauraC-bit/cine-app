@@ -58,13 +58,27 @@ const ConnexionForm = () => {
     <div className="displayflex">
       <form ref={connexion} onSubmit={authentification}>
         <label>Email</label>
-        <input type="email" name="email" required autoComplete="off" />
+        <input
+          className="inputForm"
+          type="email"
+          name="email"
+          required
+          autoComplete="off"
+        />
         <label>Mot de passe</label>
         <div className="flexinput">
-          <input type={hidden} name="password" required autoComplete="off" />
+          <input
+            className="inputForm"
+            type={hidden}
+            name="password"
+            required
+            autoComplete="off"
+          />
           <i className="hidden_password" onClick={showPassword}></i>
         </div>
-        <button type="submit">Envoyer</button>
+        <button className="button_Form" type="submit">
+          Envoyer
+        </button>
       </form>
       <div className="div_connexion">
         <span

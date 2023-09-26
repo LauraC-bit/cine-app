@@ -11,7 +11,12 @@ const Profil = () => {
   const token = useSelector((state) => state.token.token);
   const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   const dispatch = useDispatch();
-  const [user, setUser] = useState({ password: "", pseudo: "", email: "" });
+  const [user, setUser] = useState({
+    password: "",
+    pseudo: "",
+    email: "",
+    darkMode: false,
+  });
   const [modify, setModify] = useState(false);
   const modifyForm = useRef();
 
@@ -40,7 +45,16 @@ const Profil = () => {
       })
       .then((user) => (response = user))
       .catch((error) => (response = error));
-    console.log(e);
+
+    axios
+      .get("http://localhost:8000/user/get-user", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((user) => setUser(user.data.user))
+      .catch((error) => (response = error));
 
     if (modify === true) {
       setModify(false);
@@ -60,10 +74,18 @@ const Profil = () => {
   const handleDelete = () => {
     let response = {};
     axios
-      .delete("http://localhost:8000/user/delete", token)
+      .delete("http://localhost:8000/user/delete", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
       .then((user) => (response = user))
       .catch((error) => (response = error));
-    console.log(response);
+    setTimeout(() => {
+      window.location.href = "http://localhost:3000/inscription";
+    }, 2000);
+    localStorage.removeItem("token", response.data.token);
   };
   useEffect(() => {
     let response = {};
@@ -82,10 +104,45 @@ const Profil = () => {
     if (isDarkModeOn === false) {
       dispatch(setDarkMode(true));
 
-      //ici? Envoyez au back associé à l'utilisateur le darkMode One ou OFF, en update?
+      let response = {};
+      let request = {
+        darkMode: true,
+      };
+      axios
+        .patch("http://localhost:8000/user/update-user", request, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        })
+        .then((user) => setUser(user.data.user))
+        .catch((error) => (response = error));
+      console.log(user); // revient ok tout l'utilisateur mais en mode FALSE alors que dans le BACK on obtient bien le TRUE
+      console.log(token);
+      if (user.darkMode === true) {
+        dispatch(setDarkMode(true));
+      }
     } else {
       dispatch(setDarkMode(false));
-      // le mettre aussi ici? en update ?
+
+      let response = {};
+      let request = {
+        darkMode: false,
+      };
+      axios
+        .patch("http://localhost:8000/user/update-user", request, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        })
+        .then((user) => setUser(user.data.user))
+        .catch((error) => (response = error));
+      console.log(user); // revient ok tout l'utilisateur mais en mode FALSE alors que dans le BACK on obtient bien le TRUE
+      console.log(token);
+      if (user.darkMode === false) {
+        dispatch(setDarkMode(false));
+      }
     }
   };
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addID, deleteID } from "../feature/favorite.slice";
-import { setDelete } from "../feature/delete.slice";
 import axios from "axios";
 
 const Card = (props) => {
@@ -20,7 +19,6 @@ const Card = (props) => {
   const dispatch = useDispatch();
 
   let token = useSelector((state) => state.token.token);
-  let deleteFav = useSelector((state) => state.delete.delete);
 
   useEffect(() => {
     if (favorisMovies.length !== 0) {
@@ -29,7 +27,6 @@ const Card = (props) => {
       let response = {};
       let request = {
         favorisMovies: favorisMovies,
-        deleteFromFav: false,
       };
       axios
         .patch("http://localhost:8000/user/update-favmovies", request, {
@@ -142,37 +139,25 @@ const Card = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (deleteFavorisMovies.length !== 0) {
-      console.log(deleteFavorisMovies);
-      let response = {};
-      let request = {
-        favorisMovies: deleteFavorisMovies,
-        deleteFromFav: true,
-      };
-      axios
-        .patch("http://localhost:8000/user/update-favmovies", request, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-        })
-        .then((user) => (response = user))
-        .catch((error) => (response = error));
-      console.log(response);
-      console.log(token);
-
-      dispatch(deleteID(...deleteFavorisMovies));
-    }
-  }, [deleteFavorisMovies]);
-
-  const deleteFavorite = (movie) => {
+  const deleteFavorite = async (movie) => {
     setdeleteFavorisMovies([movie]);
-    if (deleteFav === false) {
-      dispatch(setDelete(true));
-    } else {
-      dispatch(setDelete(false));
-    }
+
+    let response = {};
+    let request = {
+      favorisMovies: deleteFavorisMovies,
+    };
+    await axios
+      .delete("http://localhost:8000/user/delete-movie", request, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((user) => (response = user))
+      .catch((error) => (response = error));
+    console.log(response);
+
+    dispatch(deleteID(...deleteFavorisMovies));
   };
 
   const handleMouseOver = () => {

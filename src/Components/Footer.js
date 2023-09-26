@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const user = useSelector((state) => state.token.token);
+
   return (
     <footer className="footer-basic">
       <div className="social">
@@ -21,11 +24,14 @@ const Footer = () => {
         <li className="list-inline-item">
           <a href="http://localhost:3000/">Accueil</a>
         </li>
-        <li className="list-inline-item">
-          <a href="http://localhost:3000/inscription">Inscription</a>
+
+        <li className={user ? "displaynone" : "list-inline-item"}>
+          <a href="http://localhost:3000/inscription">"Inscription"</a>
         </li>
         <li className="list-inline-item">
-          <a href="http://localhost:3000/connexion">Connexion</a>
+          <a href="http://localhost:3000/connexion">
+            {user ? "Se déconnecter" : "Connexion"}
+          </a>
         </li>
         <li className="list-inline-item">
           <a href="http://localhost:3000/contact">Ecrivez-nous!</a>

@@ -15,7 +15,6 @@ const Favoris = () => {
   const [allMovies, setAllMovies] = useState([]);
 
   let token = useSelector((state) => state.token.token);
-  let deleteFav = useSelector((state) => state.delete.delete);
   let inputValue = useSelector((state) => state.input.input);
   const isDarkModeOn = useSelector((state) => state.darkMode.darkMode);
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const Favoris = () => {
         );
       })
       .catch((error) => console.log(error));
-  }, [deleteFav]);
+  }, []);
 
   useEffect(() => {
     setResult(allMovies);
